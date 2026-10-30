@@ -6,22 +6,35 @@
   },
   "id": "icedkey.click-timing",
   "name": "Click Timing",
-  "version": "v1.0.0",
+  "version": "v1.1.0",
   "developer": "IceDKey",
-  "description": "Sets how many milliseconds after a tap the click is played. Works on Android.",
+  "description": "Delays your click by milliseconds or frames. Works on Android.",
   "settings": {
     "enabled": {
       "type": "bool",
       "name": "Enabled",
       "default": true
     },
+    "use-frames": {
+      "type": "bool",
+      "name": "Use frames",
+      "description": "Delay in frames instead of milliseconds.",
+      "default": false
+    },
     "delay-ms": {
       "type": "int",
-      "name": "Click delay (ms)",
-      "description": "How many milliseconds after a tap the click is played.",
+      "name": "Delay (ms)",
       "default": 5,
       "min": 0,
       "max": 500,
+      "control": { "slider": true }
+    },
+    "delay-frames": {
+      "type": "int",
+      "name": "Delay (frames)",
+      "default": 1,
+      "min": 0,
+      "max": 30,
       "control": { "slider": true }
     },
     "only-in-level": {
