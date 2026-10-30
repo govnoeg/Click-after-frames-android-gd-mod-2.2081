@@ -7,7 +7,7 @@
   "id": "yourname.click-timing",
   "name": "Click Timing",
   "version": "v1.0.0",
-  "developer": "yourname",
+  "developer": "IceDKey",
   "description": "Sets how many milliseconds after a tap the click is played. Works on Android.",
   "settings": {
     "enabled": {
