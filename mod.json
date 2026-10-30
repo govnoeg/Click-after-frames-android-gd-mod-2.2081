@@ -1,10 +1,10 @@
 {
-  "geode":"geode": "5.11.2",
+  "geode": "5.11.2",
   "gd": {
     "android": "2.2081",
     "win": "2.2081"
   },
-  "id": "IceDKey.click-timing",
+  "id": "icedkey.click-timing",
   "name": "Click Timing",
   "version": "v1.0.0",
   "developer": "IceDKey",
