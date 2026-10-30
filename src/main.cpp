@@ -1,6 +1,8 @@
 #include <Geode/Geode.hpp>
 #include <Geode/modify/GJBaseGameLayer.hpp>
 #include <Geode/modify/PlayLayer.hpp>
+#include <Geode/modify/PauseLayer.hpp>
+#include <Geode/ui/GeodeUI.hpp>
 #include <chrono>
 #include <vector>
 
@@ -71,5 +73,29 @@ class $modify(CTPlayLayer, PlayLayer) {
     void onQuit() {
         g_queue.clear();
         PlayLayer::onQuit();
+    }
+};
+
+class $modify(CTPauseLayer, PauseLayer) {
+    void customSetup() {
+        PauseLayer::customSetup();
+
+        auto label = CCLabelBMFont::create("CT", "bigFont.fnt");
+        auto sprite = CircleButtonSprite::create(label);
+        auto btn = CCMenuItemSpriteExtra::create(
+            sprite, this, menu_selector(CTPauseLayer::onCTSettings)
+        );
+        btn->setID("click-timing-button"_spr);
+
+        auto winSize = CCDirector::get()->getWinSize();
+        auto menu = CCMenu::create();
+        menu->setID("click-timing-menu"_spr);
+        menu->setPosition({winSize.width - 35.f, 35.f});
+        menu->addChild(btn);
+        this->addChild(menu);
+    }
+
+    void onCTSettings(CCObject*) {
+        geode::openSettingsPopup(Mod::get(), false);
     }
 };
