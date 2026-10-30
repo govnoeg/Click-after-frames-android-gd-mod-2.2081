@@ -31,11 +31,10 @@ class $modify(CTBaseLayer, GJBaseGameLayer) {
         g_queue.push_back({Clock::now() + std::chrono::milliseconds(ms), down, button, player1});
     }
 
-    void processCommands(float dt) {
+    void processCommands(float dt, bool isHalfTick, bool isLastTick) {
         if (!g_queue.empty()) {
             auto now = Clock::now();
             size_t i = 0;
-            // the queue is chronological, so input order is preserved
             while (i < g_queue.size() && g_queue[i].due <= now) {
                 auto c = g_queue[i];
                 g_replaying = true;
@@ -45,7 +44,7 @@ class $modify(CTBaseLayer, GJBaseGameLayer) {
             }
             g_queue.erase(g_queue.begin(), g_queue.begin() + i);
         }
-        GJBaseGameLayer::processCommands(dt);
+        GJBaseGameLayer::processCommands(dt, isHalfTick, isLastTick);
     }
 };
 
